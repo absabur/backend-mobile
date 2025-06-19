@@ -1,0 +1,74 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# next.js build output
+/.next/
+/out/
+/build/
+
+# production
+/build/
+/dist/
+
+# debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# next.js static files cache
+/.next/cache
+
+# local VSCode settings
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# log files
+*.log
+
+# optional npm cache folder
+.npm
+
+# parcel-bundler cache (if you use parcel)
+.cache
+
+# output of 'next export'
+out/
+
+# next.config.js backup files
+next.config.js.bak
+
+# public folder output (if any build artifacts)
+public/static
+
+# Typescript build output
+*.tsbuildinfo
+
+# storybook build output
+.out
+
+# JetBrains IDEs
+.idea/
+
+# Optional coverage directory
+coverage/
+
+# Yarn v2+
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# Lock files - you usually want to commit these, but can ignore if needed
+# package-lock.json
+# yarn.lock
