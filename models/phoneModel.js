@@ -53,7 +53,8 @@ const phoneSchema = new Schema({
     type: Number,
   },
   displayResolution: {
-    type: Number,
+    type: Schema.Types.ObjectId,
+    ref: "Resolution",
   },
   os: {
     type: Schema.Types.ObjectId,
@@ -65,6 +66,14 @@ const phoneSchema = new Schema({
       ref: "Chipset",
     },
   ],
+  fabrication: {
+    type: Schema.Types.ObjectId,
+    ref: "Fabrication",
+  },
+  coreCount: {
+    type: Schema.Types.ObjectId,
+    ref: "CoreCount",
+  },
   stereo: {
     type: Boolean,
   },
@@ -99,6 +108,10 @@ const phoneSchema = new Schema({
   threePointFive: {
     type: Boolean,
   },
+  bluetooth: {
+    type: Schema.Types.ObjectId,
+    ref: "Bluetooth",
+  },
   wifiVersion: {
     type: Schema.Types.ObjectId,
     ref: "WifiVersion",
@@ -117,9 +130,16 @@ const phoneSchema = new Schema({
       ref: "Network",
     },
   ],
-  charginSupport: {
+  chargingSupport: {
+    type: Number,
+  },
+  fabrication: {
     type: Schema.Types.ObjectId,
-    ref: "ChargingSupport",
+    ref: "Fabrication",
+  },
+  coreCount: {
+    type: Schema.Types.ObjectId,
+    ref: "CoreCount",
   },
   backCamera: [
     {
@@ -137,11 +157,37 @@ const phoneSchema = new Schema({
     {
       key: {
         type: Schema.Types.ObjectId,
-        ref: "Specification"
+        ref: "Specification",
       },
       value: String,
-    }
+    },
   ],
+  general: [
+    {
+      key: String,
+      value: String,
+    },
+  ],
+  features: [
+    {
+      key: String,
+      value: String,
+    },
+  ],
+  ratings: [
+    {
+      key: String,
+      value: String,
+    },
+  ],
+  table: [
+    {
+      key: String,
+      value: String,
+    },
+  ],
+  pros: [String],
+  cons: [String],
   images: [
     {
       public_id: {

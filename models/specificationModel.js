@@ -7,7 +7,7 @@ const specificationSchema = new Schema({
   },
   category: {
     type: Schema.Types.ObjectId,
-    ref: "Category"
+    ref: "Heading"
   }
 });
 

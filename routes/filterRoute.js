@@ -2,7 +2,6 @@ const express = require("express");
 const { createLimiter } = require("../middleware/limiter");
 const {
   createOS,
-  createChargingSupport,
   createCamera,
   createBatteryType,
   createBrand,
@@ -18,7 +17,6 @@ const {
   createWifiVersion,
 
   getAllOS,
-  getAllChargingSupport,
   getAllCamera,
   getAllBatteryType,
   getAllBrand,
@@ -34,7 +32,6 @@ const {
   getAllWifiVersion,
 
   updateOS,
-  updateChargingSupport,
   updateCamera,
   updateBatteryType,
   updateBrand,
@@ -48,109 +45,143 @@ const {
   updateUsbType,
   updateWifiType,
   updateWifiVersion,
+  getAllDisplayResolution,
+  updateDisplayResolution,
+  createDisplayResolution,
+  createFabrication,
+  getAllFabrication,
+  updateFabrication,
+  createCoreCount,
+  getAllCoreCount,
+  updateCoreCount,
+  createBluetooth,
+  getAllBluetooth,
+  updateBluetooth,
 } = require("../controllers/filterController");
 
 const OSRouter = express.Router();
 
-OSRouter.post("/create", createLimiter(), createOS);
+OSRouter.post("/create", createOS);
 OSRouter.get("/get-all", getAllOS);
-OSRouter.put("/update/:id", createLimiter(), updateOS);
+OSRouter.put("/update/:id", updateOS);
 
-const ChargingSupportRouter = express.Router();
+const FabricationRouter = express.Router();
 
-ChargingSupportRouter.post("/create", createLimiter(), createChargingSupport);
-ChargingSupportRouter.get("/get-all", getAllChargingSupport);
-ChargingSupportRouter.put(
+FabricationRouter.post("/create", createFabrication);
+FabricationRouter.get("/get-all", getAllFabrication);
+FabricationRouter.put(
   "/update/:id",
-  createLimiter(),
-  updateChargingSupport
+
+  updateFabrication
+);
+
+const CoreCountRouter = express.Router();
+
+CoreCountRouter.post("/create", createCoreCount);
+CoreCountRouter.get("/get-all", getAllCoreCount);
+CoreCountRouter.put(
+  "/update/:id",
+
+  updateCoreCount
 );
 
 const CameraRouter = express.Router();
 
-CameraRouter.post("/create", createLimiter(), createCamera);
+CameraRouter.post("/create", createCamera);
 CameraRouter.get("/get-all", getAllCamera);
-CameraRouter.put("/update/:id", createLimiter(), updateCamera);
+CameraRouter.put("/update/:id", updateCamera);
 
 const BatteryTypeRouter = express.Router();
 
-BatteryTypeRouter.post("/create", createLimiter(), createBatteryType);
+BatteryTypeRouter.post("/create", createBatteryType);
 BatteryTypeRouter.get("/get-all", getAllBatteryType);
-BatteryTypeRouter.put("/update/:id", createLimiter(), updateBatteryType);
+BatteryTypeRouter.put("/update/:id", updateBatteryType);
 
 const BrandRouter = express.Router();
 
-BrandRouter.post("/create", createLimiter(), createBrand);
+BrandRouter.post("/create", createBrand);
 BrandRouter.get("/get-all", getAllBrand);
-BrandRouter.put("/update/:id", createLimiter(), updateBrand);
+BrandRouter.put("/update/:id", updateBrand);
 
 const ChipsetRouter = express.Router();
 
-ChipsetRouter.post("/create", createLimiter(), createChipset);
+ChipsetRouter.post("/create", createChipset);
 ChipsetRouter.get("/get-all", getAllChipset);
-ChipsetRouter.put("/update/:id", createLimiter(), updateChipset);
+ChipsetRouter.put("/update/:id", updateChipset);
 
 const DisplayTypeRouter = express.Router();
 
-DisplayTypeRouter.post("/create", createLimiter(), createDisplayType);
+DisplayTypeRouter.post("/create", createDisplayType);
 DisplayTypeRouter.get("/get-all", getAllDisplayType);
-DisplayTypeRouter.put("/update/:id", createLimiter(), updateDisplayType);
+DisplayTypeRouter.put("/update/:id", updateDisplayType);
+
+const DisplayResolutionRouter = express.Router();
+
+DisplayResolutionRouter.post("/create", createDisplayResolution);
+DisplayResolutionRouter.get("/get-all", getAllDisplayResolution);
+DisplayResolutionRouter.put("/update/:id", updateDisplayResolution);
 
 const NetworkRouter = express.Router();
 
-NetworkRouter.post("/create", createLimiter(), createNetwork);
+NetworkRouter.post("/create", createNetwork);
 NetworkRouter.get("/get-all", getAllNetwork);
-NetworkRouter.put("/update/:id", createLimiter(), updateNetwork);
+NetworkRouter.put("/update/:id", updateNetwork);
 
 const RAMRouter = express.Router();
 
-RAMRouter.post("/create", createLimiter(), createRAM);
+RAMRouter.post("/create", createRAM);
 RAMRouter.get("/get-all", getAllRAM);
-RAMRouter.put("/update/:id", createLimiter(), updateRAM);
+RAMRouter.put("/update/:id", updateRAM);
 
 const RefreshRateRouter = express.Router();
 
-RefreshRateRouter.post("/create", createLimiter(), createRefreshRate);
+RefreshRateRouter.post("/create", createRefreshRate);
 RefreshRateRouter.get("/get-all", getAllRefreshRate);
-RefreshRateRouter.put("/update/:id", createLimiter(), updateRefreshRate);
+RefreshRateRouter.put("/update/:id", updateRefreshRate);
 
 const StatusRouter = express.Router();
 
-StatusRouter.post("/create", createLimiter(), createStatus);
+StatusRouter.post("/create", createStatus);
 StatusRouter.get("/get-all", getAllStatus);
-StatusRouter.put("/update/:id", createLimiter(), updateStatus);
+StatusRouter.put("/update/:id", updateStatus);
 
 const StorageRouter = express.Router();
 
-StorageRouter.post("/create", createLimiter(), createStorage);
+StorageRouter.post("/create", createStorage);
 StorageRouter.get("/get-all", getAllStorage);
-StorageRouter.put("/update/:id", createLimiter(), updateStorage);
+StorageRouter.put("/update/:id", updateStorage);
 
 const UsbTypeRouter = express.Router();
 
-UsbTypeRouter.post("/create", createLimiter(), createUsbType);
+UsbTypeRouter.post("/create", createUsbType);
 UsbTypeRouter.get("/get-all", getAllUsbType);
-UsbTypeRouter.put("/update/:id", createLimiter(), updateUsbType);
+UsbTypeRouter.put("/update/:id", updateUsbType);
+
+const BluetoothRouter = express.Router();
+
+BluetoothRouter.post("/create", createBluetooth);
+BluetoothRouter.get("/get-all", getAllBluetooth);
+BluetoothRouter.put("/update/:id", updateBluetooth);
 
 const WifiTypeRouter = express.Router();
 
-WifiTypeRouter.post("/create", createLimiter(), createWifiType);
+WifiTypeRouter.post("/create", createWifiType);
 WifiTypeRouter.get("/get-all", getAllWifiType);
-WifiTypeRouter.put("/update/:id", createLimiter(), updateWifiType);
+WifiTypeRouter.put("/update/:id", updateWifiType);
 
 const WifiVersionRouter = express.Router();
 
-WifiVersionRouter.post("/create", createLimiter(), createWifiVersion);
+WifiVersionRouter.post("/create", createWifiVersion);
 WifiVersionRouter.get("/get-all", getAllWifiVersion);
-WifiVersionRouter.put("/update/:id", createLimiter(), updateWifiVersion);
+WifiVersionRouter.put("/update/:id", updateWifiVersion);
 
 module.exports = {
   OSRouter,
-  ChargingSupportRouter,
   CameraRouter,
   BatteryTypeRouter,
   BrandRouter,
   ChipsetRouter,
+  DisplayResolutionRouter,
   DisplayTypeRouter,
   NetworkRouter,
   RAMRouter,
@@ -158,6 +189,9 @@ module.exports = {
   StatusRouter,
   StorageRouter,
   UsbTypeRouter,
+  BluetoothRouter,
   WifiTypeRouter,
   WifiVersionRouter,
+  FabricationRouter,
+  CoreCountRouter,
 };

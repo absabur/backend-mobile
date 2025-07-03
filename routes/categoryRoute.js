@@ -4,7 +4,7 @@ const { createLimiter } = require("../middleware/limiter");
 
 const categoryRouter = express.Router();
 
-categoryRouter.post("/create", createLimiter(), createCategory)
+categoryRouter.post("/create", createCategory)
 categoryRouter.get("/get-all", getCategories)
 categoryRouter.put("/update/:categoryId", createLimiter(), updateCategory)
 

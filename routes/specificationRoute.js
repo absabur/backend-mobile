@@ -4,7 +4,7 @@ const { createSpecification, getSpecifications, updateSpecification } = require(
 
 const specificationRouter = express.Router();
 
-specificationRouter.post("/create", createLimiter(), createSpecification)
+specificationRouter.post("/create", createSpecification)
 specificationRouter.get("/get-all", getSpecifications)
 specificationRouter.put("/update/:specId", createLimiter(), updateSpecification)
 

@@ -11,14 +11,25 @@ exports.OS = model("OS", osSchema);
 
 
 
-const chargingSupportSchema = new Schema({
+const fabricationSchema = new Schema({
   name: {
     type: String,
     trim: true,
   },
 });
 
-exports.ChargingSupport = model("ChargingSupport", chargingSupportSchema);
+exports.Fabrication = model("Fabrication", fabricationSchema);
+
+
+
+const coreCountSchema = new Schema({
+  name: {
+    type: String,
+    trim: true,
+  },
+});
+
+exports.CoreCount = model("CoreCount", coreCountSchema);
 
 
 
@@ -74,6 +85,17 @@ const displayTypeSchema = new Schema({
 });
 
 exports.DisplayType = model("DisplayType", displayTypeSchema);
+
+
+
+const displayResolutionSchema = new Schema({
+  name: {
+    type: String,
+    trim: true,
+  },
+});
+
+exports.DisplayResolution = model("DisplayResolution", displayResolutionSchema);
 
 
 
@@ -140,6 +162,17 @@ const usbTypeSchema = new Schema({
 });
 
 exports.UsbType = model("UsbType", usbTypeSchema);
+
+
+
+const BluetoothSchema = new Schema({
+  name: {
+    type: String,
+    trim: true,
+  },
+});
+
+exports.Bluetooth = model("Bluetooth", BluetoothSchema);
 
 
 

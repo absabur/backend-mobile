@@ -2,7 +2,8 @@ const createError = require("http-errors");
 const { successResponse } = require("./responseController");
 const {
   OS,
-  ChargingSupport,
+  Fabrication,
+  CoreCount,
   Camera,
   BatteryType,
   Brand,
@@ -16,6 +17,8 @@ const {
   UsbType,
   WifiType,
   WifiVersion,
+  DisplayResolution,
+  Bluetooth,
 } = require("../models/filterModels");
 
 exports.createOS = async (req, res, next) => {
@@ -57,53 +60,99 @@ exports.updateOS = async (req, res, next) => {
   }
 };
 
-exports.createChargingSupport = async (req, res, next) => {
+exports.createFabrication = async (req, res, next) => {
   try {
     const { name } = req.body;
-    if (!name) throw createError(400, "Please Provide ChargingSupport Name");
-    const ChargingSupportinstance = await ChargingSupport.create({ name });
-    if (!ChargingSupportinstance)
-      throw createError(401, "Unable To Create ChargingSupport");
+    if (!name) throw createError(400, "Please Provide Fabrication Name");
+    const Fabricationinstance = await Fabrication.create({ name });
+    if (!Fabricationinstance)
+      throw createError(401, "Unable To Create Fabrication");
     successResponse(
       res,
       201,
-      "ChargingSupport Successfully Created",
-      ChargingSupportinstance
+      "Fabrication Successfully Created",
+      Fabricationinstance
     );
   } catch (error) {
     next(error);
   }
 };
 
-exports.getAllChargingSupport = async (req, res, next) => {
+exports.getAllFabrication = async (req, res, next) => {
   try {
-    const allChargingSupport = await ChargingSupport.find();
-    if (!allChargingSupport)
-      throw createError(404, "ChargingSupport Not Found");
-    successResponse(res, 200, "", allChargingSupport);
+    const allFabrication = await Fabrication.find();
+    if (!allFabrication)
+      throw createError(404, "Fabrication Not Found");
+    successResponse(res, 200, "", allFabrication);
   } catch (error) {
     next(error);
   }
 };
 
-exports.updateChargingSupport = async (req, res, next) => {
+exports.updateFabrication = async (req, res, next) => {
   try {
-    const ChargingSupportId = req.params.id;
+    const FabricationId = req.params.id;
     const name = req.body.name;
-    if (!name) throw createError(404, "Please Provide ChargingSupport Name");
-    const ChargingSupportinstance = await ChargingSupport.findByIdAndUpdate(
-      ChargingSupportId,
+    if (!name) throw createError(404, "Please Provide Fabrication Name");
+    const Fabricationinstance = await Fabrication.findByIdAndUpdate(
+      FabricationId,
       { name },
       { new: true }
     );
-    if (!ChargingSupportinstance)
-      throw createError(404, "ChargingSupport Not Found");
-    successResponse(res, 201, "", ChargingSupportinstance);
+    if (!Fabricationinstance)
+      throw createError(404, "Fabrication Not Found");
+    successResponse(res, 201, "", Fabricationinstance);
   } catch (error) {
     next(error);
   }
 };
 
+exports.createCoreCount = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    if (!name) throw createError(400, "Please Provide CoreCount Name");
+    const CoreCountinstance = await CoreCount.create({ name });
+    if (!CoreCountinstance)
+      throw createError(401, "Unable To Create CoreCount");
+    successResponse(
+      res,
+      201,
+      "CoreCount Successfully Created",
+      CoreCountinstance
+    );
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getAllCoreCount = async (req, res, next) => {
+  try {
+    const allCoreCount = await CoreCount.find();
+    if (!allCoreCount)
+      throw createError(404, "CoreCount Not Found");
+    successResponse(res, 200, "", allCoreCount);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.updateCoreCount = async (req, res, next) => {
+  try {
+    const CoreCountId = req.params.id;
+    const name = req.body.name;
+    if (!name) throw createError(404, "Please Provide CoreCount Name");
+    const CoreCountinstance = await CoreCount.findByIdAndUpdate(
+      CoreCountId,
+      { name },
+      { new: true }
+    );
+    if (!CoreCountinstance)
+      throw createError(404, "CoreCount Not Found");
+    successResponse(res, 201, "", CoreCountinstance);
+  } catch (error) {
+    next(error);
+  }
+};
 exports.createCamera = async (req, res, next) => {
   try {
     const { name } = req.body;
@@ -306,6 +355,51 @@ exports.updateDisplayType = async (req, res, next) => {
     );
     if (!DisplayTypeinstance) throw createError(404, "DisplayType Not Found");
     successResponse(res, 201, "", DisplayTypeinstance);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.createDisplayResolution = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    if (!name) throw createError(400, "Please Provide DisplayResolution Name");
+    const DisplayResolutioninstance = await DisplayResolution.create({ name });
+    if (!DisplayResolutioninstance)
+      throw createError(401, "Unable To Create DisplayResolution");
+    successResponse(
+      res,
+      201,
+      "DisplayResolution Successfully Created",
+      DisplayResolutioninstance
+    );
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getAllDisplayResolution = async (req, res, next) => {
+  try {
+    const allDisplayType = await DisplayResolution.find();
+    if (!allDisplayType) throw createError(404, "DisplayResolution Not Found");
+    successResponse(res, 200, "", allDisplayType);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.updateDisplayResolution = async (req, res, next) => {
+  try {
+    const DisplayTypeId = req.params.id;
+    const name = req.body.name;
+    if (!name) throw createError(404, "Please Provide DisplayResolution Name");
+    const DisplayResolutioninstance = await DisplayResolution.findByIdAndUpdate(
+      DisplayTypeId,
+      { name },
+      { new: true }
+    );
+    if (!DisplayResolutioninstance) throw createError(404, "DisplayResolution Not Found");
+    successResponse(res, 201, "", DisplayResolutioninstance);
   } catch (error) {
     next(error);
   }
@@ -546,6 +640,50 @@ exports.updateUsbType = async (req, res, next) => {
     );
     if (!UsbTypeinstance) throw createError(404, "UsbType Not Found");
     successResponse(res, 201, "", UsbTypeinstance);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.createBluetooth = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    if (!name) throw createError(400, "Please Provide Bluetooth Name");
+    const bluetoothInstance = await Bluetooth.create({ name });
+    if (!bluetoothInstance) throw createError(401, "Unable To Create Bluetooth");
+    successResponse(
+      res,
+      201,
+      "Bluetooth Successfully Created",
+      bluetoothInstance
+    );
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.getAllBluetooth = async (req, res, next) => {
+  try {
+    const allBluetooth = await Bluetooth.find();
+    if (!allBluetooth) throw createError(404, "Bluetooth Not Found");
+    successResponse(res, 200, "", allBluetooth);
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.updateBluetooth = async (req, res, next) => {
+  try {
+    const BluetoothId = req.params.id;
+    const name = req.body.name;
+    if (!name) throw createError(404, "Please Provide Bluetooth Name");
+    const bluetoothInstance = await Bluetooth.findByIdAndUpdate(
+      BluetoothId,
+      { name },
+      { new: true }
+    );
+    if (!bluetoothInstance) throw createError(404, "Bluetooth Not Found");
+    successResponse(res, 201, "", bluetoothInstance);
   } catch (error) {
     next(error);
   }
